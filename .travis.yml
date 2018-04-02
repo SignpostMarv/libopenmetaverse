@@ -1,0 +1,8 @@
+language: csharp
+solution: OpenMetaverse.sln
+install:
+    - ./runprebuild.sh
+    - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+    - xbuild OpenMetaverse.sln
+    - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./bin/OpenMetaverse.Tests.dll
